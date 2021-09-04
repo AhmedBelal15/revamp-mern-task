@@ -17,6 +17,6 @@ module.exports = {
     quotes: ["error", "double"],
     // we want to force semicolons
     semi: ["error", "always"],
-    "linebreak-style": ["disabled", "windows"],
+    "linebreak-style": 0,
   },
 };
