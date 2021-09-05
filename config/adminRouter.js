@@ -10,7 +10,7 @@ const router = AdminBroExpress.buildAuthenticatedRouter(
   adminBro,
   {
     cookieName: "admin-bro",
-    cookiePassword: "superLongPassword",
+    cookiePassword: process.env.COOKIE_PASSWORD,
     authenticate: async (email, password) => {
       const user = await User.findOne({ email });
       if (user && (await bcrypt.compare(password, user.encryptedPassword))) {
