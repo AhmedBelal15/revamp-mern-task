@@ -1,7 +1,9 @@
 const AdminBro = require("admin-bro");
 const AdminBroMongoose = require("@admin-bro/mongoose");
 const Ticket = require("../models/Ticket");
-const ticketOptions = require("./modelsOptions/ticketOptions");
+const User = require("../models/User");
+const { ticketOptions } = require("./modelsOptions/ticketOptions");
+const { userOptions } = require("./modelsOptions/userOptions");
 
 const contentNavigation = {
   name: "Content",
@@ -10,7 +12,6 @@ const contentNavigation = {
 
 AdminBro.registerAdapter(AdminBroMongoose);
 const adminOptions = {
-  databases: [],
   rootpath: "/admin",
   resources: [
     {
@@ -18,6 +19,13 @@ const adminOptions = {
       options: {
         navigation: contentNavigation,
         ...ticketOptions,
+      },
+    },
+    {
+      resource: User,
+      options: {
+        navigation: contentNavigation,
+        ...userOptions,
       },
     },
   ],
